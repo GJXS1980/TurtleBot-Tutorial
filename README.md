@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 ## <center>TurtleBot-Tutorial
 ### <center>**Tutorial1 **_ 模拟测试`TurtleBot Stage Simulator`_
 >`Stage Simulator`是一个2-D多机器人模拟器,它模拟了.world文件中定义的世界。点击二维导航目标和命令机器人以导航地图中的任何位置。
@@ -281,6 +280,3 @@ rostopic pub /joint4_position/command std_msgs/Float64 "data: 0.21" --once
 >http://emanual.robotis.com/docs/en/platform/turtlebot3/simulation/#simulation
 >
 >https://github.com/ROBOTIS-GIT/emanual/blob/master/docs/en/platform/turtlebot3/simulation.md
-=======
-# turtlebot
->>>>>>> origin/master
