@@ -1,5 +1,5 @@
 ## <center>TurtleBot-Tutorial
-### <center>**Tutorial1**_ 模拟测试`TurtleBot Stage Simulator`_
+### <center>**Tutorial1** 模拟测试`TurtleBot Stage Simulator`
 >`Stage Simulator`是一个2-D多机器人模拟器,它模拟了.world文件中定义的世界。点击二维导航目标和命令机器人以导航地图中的任何位置。
 
 ```
