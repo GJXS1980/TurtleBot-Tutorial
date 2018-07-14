@@ -1,10 +1,19 @@
 ## <center>TurtleBot-Tutorial
+************************************
+##### Installation dependence
+```bash
+sudo apt-get install ros-kinetic-ros-controllers ros-kinetic-gazebo* ros-kinetic-moveit* ros-kinetic-dynamixel-sdk ros-kinetic-dynamixel-workbench-toolbox ros-kinetic-ar-track-alvar ros-kinetic-ar-track-alvar-msgs ros-kinetic-industrial-core libsdl1.2-dev libsdl-image1.2-dev
+```
+
+************************************
 ### <center>**Tutorial1** 模拟测试`TurtleBot Stage Simulator`
 >`Stage Simulator`是一个2-D多机器人模拟器,它模拟了.world文件中定义的世界。点击二维导航目标和命令机器人以导航地图中的任何位置。
 
 ```
 roslaunch turtlebot_stage turtlebot_in_stage.launch
 ```
+
+************************************
 ### <center>**Tutorial2** _制作地图并使用地图进行导航_
 >说明：使用导航堆栈创建Gazebo世界的地图并基于它开始导航
 
@@ -46,6 +55,8 @@ rosrun map_server map_saver -f <your map name>
 roslaunch turtlebot_gazebo amcl_demo.launch map_file:=<full path to your map YAML file>
 ```
 或者，如果您更喜欢使用已经创建的地图，只需省略map_file参数即可。
+
+************************************
 ### <center>**Tutorial3** _在gazebo上显示turtlebot_
 #### 1.在TurtleBot上调出gazebo模型
 ```
@@ -63,6 +74,8 @@ roslaunch kobuki_keyop keyop.launch
 ````
 roslaunch turtlebot_rviz_launchers view_robot.launch
 ````
+
+************************************
 ### <center>**Tutorial4** _3D可视化_
 #### 1.启动3D传感器
 ```
@@ -86,6 +99,7 @@ roslaunch turtlebot_rviz_launchers view_robot.launch
 >
 >Registered PointCloud
 
+************************************
 ### <center>**Tutorial5**  _TurtleBot3 Simulation using Fake Node_
 #### 1.首先在.bashrc添加下面代码
 ```
@@ -208,12 +222,10 @@ rosrun turtlebot3_teleop turtlebot3_teleop_key cmd_vel:=tb3_0/cmd_vel
 ```
 rosrun map_server map_saver -f ~/map
 ```
+
+************************************
 ### <center>**Tutorial6**  _TurtleBotOpenManipulator_
-##### 1.安装相关依赖:
-```
-$ sudo apt-get install ros-kinetic-ros-controllers ros-kinetic-gazebo* ros-kinetic-moveit* ros-kinetic-dynamixel-sdk ros-kinetic-dynamixel-workbench-toolbox ros-kinetic-ar-track-alvar ros-kinetic-ar-track-alvar-msgs ros-kinetic-industrial-core
-```
-##### 2.首先在.bashrc添加下面代码
+##### 1.首先在.bashrc添加下面代码
 ```
 export TURTLEBOT3_MODEL=burger
 export TURTLEBOT3_MODEL=waffle
@@ -225,30 +237,30 @@ source .bashrc
 ```
 使环境生效
 
-##### 3.导出TurtleBot3_OpenManipulator模型
+##### 2.导出TurtleBot3_OpenManipulator模型
 ```
 roslaunch open_manipulator_with_tb3_description open_manipulator_with_tb3_rviz.launch
 ```
-##### 4.OpenCR安装程序
+##### 3.OpenCR安装程序
 教程参考:[OpenCR Setup](http://emanual.robotis.com/docs/en/platform/turtlebot3/manipulation/#hardware-setup)
 
-##### 5.用OpenManipulator引导TurtleBot3
+##### 4.用OpenManipulator引导TurtleBot3
 ```
 roslaunch open_manipulator_with_tb3_description open_manipulator_with_tb3_model.launch use_gazebo:=false
 ```
-##### 6.SLAM
+##### 5.SLAM
 ```
 roslaunch open_manipulator_with_tb3_tools open_manipulator_with_tb3_slam.launch use_gazebo:=false open_rviz:=true
 ```
-##### 7.导航
+##### 6.导航
 ```
 roslaunch open_manipulator_with_tb3_tools open_manipulator_with_tb3_navigation.launch use_gazebo:=false open_rviz:=true
 ```
-##### 8.找到AR标记
+##### 7.找到AR标记
 ```
 roslaunch open_manipulator_ar_markers ar_pose.launch
 ```
-##### 9.MoveIt！
+##### 8.MoveIt！
 ```
 roslaunch open_manipulator_with_tb3_tools open_manipulator_with_tb3_manipulation.launch use_gazebo:=false open_rviz:=true
 ```
@@ -256,13 +268,13 @@ roslaunch open_manipulator_with_tb3_tools open_manipulator_with_tb3_manipulation
 ```
 rostopic pub /open_manipulator_with_tb3/gripper std_msgs/String "data: 'grip_off'" --once
 ```
-##### 10.挑选和放置
+##### 9.挑选和放置
 >这里提供移动操作的拾取和放置示例。此示例由控制器启动，即自动启动和停止导航堆栈MoveIt！，通过传送ROS消息来选择和放置启动文件。用户可以修改此节点以应用其环境。
 
 ```
 roslaunch open_manipulator_with_tb3_tools open_manipulator_with_tb3_controller.launch
 ```
-##### 11.模拟
+##### 10.模拟
 >在Gazebo模拟器上用OpenManipulator加载TurtleBot3并单击Play按钮
 
 ```
@@ -273,6 +285,7 @@ roslaunch open_manipulator_with_tb3_gazebo open_manipulator_with_tb3_gazebo.laun
 rostopic pub /joint4_position/command std_msgs/Float64 "data: 0.21" --once
 ```
 
+************************************
 >参考网站:
 >
 >http://learn.turtlebot.com/
@@ -280,3 +293,5 @@ rostopic pub /joint4_position/command std_msgs/Float64 "data: 0.21" --once
 >http://emanual.robotis.com/docs/en/platform/turtlebot3/simulation/#simulation
 >
 >https://github.com/ROBOTIS-GIT/emanual/blob/master/docs/en/platform/turtlebot3/simulation.md
+
+************************************
