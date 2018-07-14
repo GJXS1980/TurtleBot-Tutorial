@@ -4,6 +4,16 @@
 ```bash
 sudo apt-get install ros-kinetic-ros-controllers ros-kinetic-gazebo* ros-kinetic-moveit* ros-kinetic-dynamixel-sdk ros-kinetic-dynamixel-workbench-toolbox ros-kinetic-ar-track-alvar ros-kinetic-ar-track-alvar-msgs ros-kinetic-industrial-core libsdl1.2-dev libsdl-image1.2-dev
 ```
+##### Workstation_Setup
+```bash
+mkdir -p ~/turtlebot_ws/src
+cd ~/turtlebot_ws/src
+git clone https://github.com/GJXS1980/TurtleBot-Tutorial.git
+cd ~/turtlebot_ws
+catkin_make
+echo "source ~/turtlebot_ws/devel/setup.bash" >> ~/.bashrc
+source ~/.bashrc
+```
 
 ************************************
 ### <center>**Tutorial1** 模拟测试`TurtleBot Stage Simulator`
