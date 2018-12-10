@@ -1,0 +1,16 @@
+<package>
+  <name>turtlebot_slam</name>
+  <version>2.4.2</version>
+  <description>
+     turtlebot_slam. 
+  </description>
+  <author>GJXS</author>
+  <maintainer email="2190315392@qq.com">GJXS</maintainer>
+  <license>BSD</license>
+  <url type="website">http://ros.org/wiki/turtlebot_bringup</url>
+  <url type="repository">https://github.com/turtlebot/turtlebot</url>
+  <url type="bugtracker">https://github.com/turtlebot/turtlebot/issues</url>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+</package>
