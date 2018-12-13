@@ -1,0 +1,9 @@
+<launch>
+    <node pkg="vision_detector" name="motion_detector" type="motion_detector.py" output="screen">
+        <remap from="input_rgb_image" to="/kinect2/hd/image_color" />
+        <rosparam>
+            minArea: 500
+            threshold: 25
+        </rosparam>
+    </node>
+</launch>

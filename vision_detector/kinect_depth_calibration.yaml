@@ -1,0 +1,31 @@
+image_width: 640
+image_height: 488
+camera_name: depth_A70774707163327A
+cameraMatrix: !!opencv-matrix
+   rows: 3
+   cols: 3
+   dt: d
+   data: [ 1.0661915728316105e+03, 0., 9.5162632221809622e+02, 0.,
+       1.0662769812576628e+03, 5.4239162178622041e+02, 0., 0., 1. ]
+distortionCoefficients: !!opencv-matrix
+   rows: 1
+   cols: 5
+   dt: d
+   data: [ 4.3002182152100055e-02, 1.8271553103543930e-02,
+       2.2974679604089738e-03, 1.1691148028946550e-04,
+       -1.7530384474246422e-01 ]
+rotation: !!opencv-matrix
+   rows: 3
+   cols: 3
+   dt: d
+   data: [ 1., 0., 0., 0., 1., 0., 0., 0., 1. ]
+projection: !!opencv-matrix
+   rows: 4
+   cols: 4
+   dt: d
+   data: [ 1.0661915728316105e+03, 0., 9.5162632221809622e+02, 0., 0.,
+       1.0662769812576628e+03, 5.4239162178622041e+02, 0., 0., 0., 1.,
+       0., 0., 0., 0., 1. ]
+
+
+
