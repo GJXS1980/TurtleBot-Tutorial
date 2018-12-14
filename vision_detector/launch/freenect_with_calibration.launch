@@ -1,37 +1,25 @@
 <launch>
-  <!-- Which image resolution: sd, qhd, hd -->
-  <arg name="resolution" default="qhd" />
-  <arg name="publish_tf" value="true" />
-  <arg name="base_name" default="kinect2" />
 
-  <!-- start kinect2 -->
-  <include file="$(find kinect2_bridge)/launch/kinect2_bridge.launch">
-    <arg name="base_name" value="$(arg base_name)" />
-    <arg name="publish_tf" value="$(arg publish_tf)" />
-    <remap from="camera/rgb/image_raw" to="/kinect2/$(arg resolution)/image_color_rect"/>
-    <remap from="camera/depth/image_raw" to="/kinect2/$(arg resolution)/image_depth_rect"/>
-    <remap from="camera/rgb/camera_info" to="/kinect2/$(arg resolution)/camera_info"/>
-    <remap from="camera/depth/camera_info" to="/kinect2/$(arg resolution)/camera_info"/>
+    <!-- Launch the freenect driver -->
+    <include file="$(find freenect_launch)/launch/freenect.launch">
+        <arg name="publish_tf"                      value="false" /> 
 
+        <!-- use device registration -->
+        <arg name="depth_registration"              value="true" /> 
 
-  <node pkg="tf" type="static_transform_publisher" name="kinect2_to_camera_tf" 
-        args="0.0 0.0 0.0 0.0 0.0 0.0 /kinect2_ir_optical_frame /camera_depth_optical_frame 40" />   
+        <arg name="rgb_processing"                  value="true" />
+        <arg name="ir_processing"                   value="false" />
+        <arg name="depth_processing"                value="false" />
+        <arg name="depth_registered_processing"     value="true" />
+        <arg name="disparity_processing"            value="false" />
+        <arg name="disparity_registered_processing" value="false" />
+        <arg name="sw_registered_processing"        value="false" />
+        <arg name="hw_registered_processing"        value="true" />
 
-  </include>
-
-
-
+        <arg name="rgb_camera_info_url"
+             value="file://$(find robot_vision)/kinect_rgb_calibration.yaml" />
+        <arg name="depth_camera_info_url"
+             value="file://$(find robot_vision)/kinect_depth_calibration.yaml" />
+    </include>
 
 </launch>
-
-
-
-
-
-
-
-
-
-
-
-
