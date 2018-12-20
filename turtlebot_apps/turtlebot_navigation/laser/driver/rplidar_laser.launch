@@ -1,10 +1,5 @@
 <launch>
-
-  <!--  启动机器人  -->
-  <include file="$(find turtlebot_bringup)/launch/minimal.launch">
-
   <!--  启动rplidar激光雷达节点  -->
-  </include>
   <node name="rplidarNode"          pkg="rplidar_ros"  type="rplidarNode" output="screen">
   <param name="serial_port"         type="string" value="/dev/rplidar"/>  
   <param name="serial_baudrate"     type="int"    value="115200"/>
@@ -12,14 +7,9 @@
   <param name="inverted"            type="bool"   value="true"/>
   <param name="angle_compensate"    type="bool"   value="true"/>
   </node>
-
-  <!--  启动gmapping参数设置  -->
-  <include file="$(find turtlebot_navigation)/launch/includes/gmapping.launch.xml"/>
-
-  <!--  启动move-base  -->
-  <include file="$(find turtlebot_navigation)/launch/includes/move_base.launch.xml"/>
-
+  
   <!--  激光雷达的位置  -->
  <node pkg="tf" type="static_transform_publisher" name="base_link_to_laser4" 
     args="0.0 0.0 0.17 0.0 3.1415926 0.0 /base_link /laser_frame 40" />
+
 </launch>

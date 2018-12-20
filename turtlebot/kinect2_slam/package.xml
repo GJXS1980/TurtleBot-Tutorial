@@ -1,8 +1,8 @@
 <package>
-  <name>turtlebot_slam</name>
+  <name>kinect2_slam</name>
   <version>2.4.2</version>
   <description>
-     turtlebot_slam. 
+     kinect2_slam. 
   </description>
   <author>GJXS</author>
   <maintainer email="2190315392@qq.com">GJXS</maintainer>

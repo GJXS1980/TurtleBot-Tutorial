@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+
+<launch>
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find kinect2_slam)/launch/kinect2_gmapping.rviz" />
+
+</launch>
