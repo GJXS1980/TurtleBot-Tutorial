@@ -1,0 +1,6 @@
+<launch>
+
+  <node pkg="vision_tensorflow" name="vision_tensorflow_camera_minst" type="vision_tensorflow_camera_mnist.py" output="screen"> 
+  </node>
+
+</launch>
