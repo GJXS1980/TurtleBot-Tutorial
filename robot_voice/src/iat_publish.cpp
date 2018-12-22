@@ -139,7 +139,7 @@ int main(int argc, char* argv[])
         if (wakeupFlag){
             ROS_INFO("Wakeup...");
             int ret = MSP_SUCCESS;
-            const char* login_params = "appid = 594a7b46, work_dir = .";
+            const char* login_params = "appid = 5c1dab33, work_dir = .";
 
             const char* session_begin_params =
                 "sub = iat, domain = iat, language = zh_cn, "

@@ -145,6 +145,7 @@ std::string to_string(int val)
     return std::string(buf);
 }
 
+//定义一问一答函数
 void voiceWordsCallback(const std_msgs::String::ConstPtr& msg)
 {
     char cmd[2000];
@@ -158,7 +159,7 @@ void voiceWordsCallback(const std_msgs::String::ConstPtr& msg)
     std::string dataString = msg->data;
     if(dataString.compare("你是谁？") == 0)
     {
-        char nameString[40] = "我是你的语音小助手";
+        char nameString[40] = "我是小谷机器人";
         text = nameString;
         std::cout<<text<<std::endl;
     }
@@ -168,6 +169,14 @@ void voiceWordsCallback(const std_msgs::String::ConstPtr& msg)
         text = helpString;
         std::cout<<text<<std::endl;
     }
+
+    else if(dataString.compare("我是谁？") == 0)
+    {
+        char hostString[40] = "你是我的主人GJ先生";
+        text = hostString;
+        std::cout<<text<<std::endl;
+    }
+
     else if(dataString.compare("现在时间。") == 0)
     {
         //获取当前时间
@@ -214,7 +223,7 @@ void toExit()
 int main(int argc, char* argv[])
 {
 	int         ret                  = MSP_SUCCESS;
-	const char* login_params         = "appid = 594a7b46, work_dir = .";//登录参数,appid与msc库绑定,请勿随意改动
+	const char* login_params         = "appid = 5c1dab33, work_dir = .";//登录参数,appid与msc库绑定,请勿随意改动
 	/*
 	* rdn:           合成音频数字发音方式
 	* volume:        合成音频的音量
