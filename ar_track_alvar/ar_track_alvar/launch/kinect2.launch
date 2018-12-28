@@ -1,0 +1,54 @@
+<launch>
+    <!-- 创建TF坐标变换  -->
+     <node pkg="tf" type="static_transform_publisher" name="camera_link_to_kinect2_rgb_optical_frame" args="0 0 0.5 0 1.57 0 camera_link kinect2_rgb_optical_frame  10" />
+
+	<!-- 启动kinect2相机  -->
+    <include file="$(find kinect2_bridge)/launch/kinect2_bridge.launch">
+        <arg name="base_name"         value="kinect2"/>
+        <arg name="sensor"            value=""/>
+        <arg name="base_name_tf"      value="kinect2"/>
+        <arg name="fps_limit"         value="-1.0"/>
+        <arg name="calib_path"        value="$(find kinect2_bridge)/data/"/>
+        <arg name="use_png"           value="false"/>
+        <arg name="jpeg_quality"      value="90"/>
+        <arg name="png_level"         value="1"/>
+        <arg name="depth_method"      value="default"/>
+        <arg name="depth_device"      value="-1"/>
+        <arg name="reg_method"        value="default"/>
+        <arg name="reg_device"        value="-1"/>
+        <arg name="max_depth"         value="12.0"/>
+        <arg name="min_depth"         value="0.1"/>
+        <arg name="queue_size"        value="5"/>
+        <arg name="bilateral_filter"  value="true"/>
+        <arg name="edge_aware_filter" value="true"/>
+        <arg name="worker_threads"    value="4"/>
+    </include>  
+
+    <!-- 配置ar_track参数 -->
+	<arg name="marker_size" default="4.4" />
+	<arg name="max_new_marker_error" default="0.08" />
+	<arg name="max_track_error" default="0.2" />
+
+
+
+    <arg name="rgb_topic"            value="/kinect2/qhd/image_color_rect"/>
+    <arg name="depth_registered_topic"         value="/kinect2/qhd/image_depth_rect"/>
+    <arg name="camera_info_topic"            value="/kinect2/qhd/camera_info"/>
+	<arg name="output_frame" default="camera_link kinect2_rgb_optical_frame" />
+
+	<node name="ar_track_alvar" pkg="ar_track_alvar" type="individualMarkers" respawn="false" output="screen">
+		<param name="marker_size"           type="double" value="$(arg marker_size)" />
+		<param name="max_new_marker_error"  type="double" value="$(arg max_new_marker_error)" />
+		<param name="max_track_error"       type="double" value="$(arg max_track_error)" />
+		<param name="output_frame"          type="string" value="$(arg output_frame)" />
+
+		<remap from="calib_path"  to="$(arg rgb_topic)" />
+
+		<remap from="publish_tf"   to="$(arg camera_info_topic)" />
+	</node>
+
+    <!-- rviz view /-->
+    <!-- node pkg="rviz" type="rviz" name="rviz" args="-d $(find vision_detector)/config/ar_track_kinect.rviz"/ -->
+
+
+</launch>
